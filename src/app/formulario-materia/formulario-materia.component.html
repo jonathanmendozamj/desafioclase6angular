@@ -1,0 +1,85 @@
+<h2>Nueva materia</h2>
+<form class="row g-3" [formGroup]="formularioMateria" (ngSubmit)="enviarForm()">
+    <div class="col-12">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre">
+        <div *ngIf="this.formularioMateria.get('nombre')?.errors?.['required'] && this.formularioMateria.get('nombre')?.touched" class="alert alert-danger" role="alert">
+            Este campo no puede quedar vacío.
+        </div>
+        <div *ngIf="this.formularioMateria.get('nombre')?.errors?.['maxlength'] && this.formularioMateria.get('nombre')?.touched" class="alert alert-danger" role="alert">
+            El nombre no puede tener más de 100 caracteres.
+        </div>
+        <div *ngIf="this.formularioMateria.get('nombre')?.errors?.['minlength'] && this.formularioMateria.get('nombre')?.touched" class="alert alert-danger" role="alert">
+            El nombre no puede tener menos de 6 caracteres.
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Año</label>
+        <input type="number" class="form-control" formControlName="anio">
+        <div *ngIf="this.formularioMateria.get('anio')?.errors?.['required'] && this.formularioMateria.get('anio')?.touched" class="alert alert-danger" role="alert">
+            Este campo no puede quedar vacío.
+        </div>
+        <div *ngIf="this.formularioMateria.get('anio')?.errors?.['max'] && this.formularioMateria.get('anio')?.touched" class="alert alert-danger" role="alert">
+            El año no puede ser mayor a 5.
+        </div>
+        <div *ngIf="this.formularioMateria.get('anio')?.errors?.['min'] && this.formularioMateria.get('anio')?.touched" class="alert alert-danger" role="alert">
+            El año no puede ser menor a 1.
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Código Materia</label>
+        <input type="text" class="form-control" formControlName="codigo_materia">
+        <div *ngIf="this.formularioMateria.get('codigo_materia')?.errors?.['required'] && this.formularioMateria.get('codigo_materia')?.touched" class="alert alert-danger" role="alert">
+            Este campo no puede quedar vacío.
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Cantidad de Horas Semanales</label>
+        <input type="number" class="form-control" formControlName="horas_semanales">
+        <div *ngIf="this.formularioMateria.get('horas_semanales')?.errors?.['required'] && this.formularioMateria.get('horas_semanales')?.touched" class="alert alert-danger" role="alert">
+            Este campo no puede quedar vacío.
+        </div>
+        <div *ngIf="this.formularioMateria.get('horas_semanales')?.errors?.['pattern'] && this.formularioMateria.get('horas_semanales')?.touched" class="alert alert-danger" role="alert">
+            Debe ingresar un número.
+        </div>
+        <div *ngIf="this.formularioMateria.get('horas_semanales')?.errors?.['max'] && this.formularioMateria.get('horas_semanales')?.touched" class="alert alert-danger" role="alert">
+            La cantidad de horas no puede ser mayor a 50.
+        </div>
+        <div *ngIf="this.formularioMateria.get('horas_semanales')?.errors?.['min'] && this.formularioMateria.get('horas_semanales')?.touched" class="alert alert-danger" role="alert">
+            La cantidad de horas no puede ser menor a 1.
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Cantidad de Horas Totales</label>
+        <input type="number" class="form-control" formControlName="horas_totales">
+        <div *ngIf="this.formularioMateria.get('horas_totales')?.errors?.['required'] && this.formularioMateria.get('horas_totales')?.touched" class="alert alert-danger" role="alert">
+            Este campo no puede quedar vacío.
+        </div>
+        <div *ngIf="this.formularioMateria.get('horas_totales')?.errors?.['pattern'] && this.formularioMateria.get('horas_totales')?.touched" class="alert alert-danger" role="alert">
+            Debe ingresar un número.
+        </div>
+        <div *ngIf="this.formularioMateria.get('horas_totales')?.errors?.['max'] && this.formularioMateria.get('horas_totales')?.touched" class="alert alert-danger" role="alert">
+            La cantidad de horas no puede ser mayor a 500.
+        </div>
+        <div *ngIf="this.formularioMateria.get('horas_totales')?.errors?.['min'] && this.formularioMateria.get('horas_totales')?.touched" class="alert alert-danger" role="alert">
+            La cantidad de horas no puede ser menor a 1.
+        </div>
+    </div>
+
+    <div class="col-12">
+        <label class="form-label">Observaciones</label>
+        <textarea class="form-control" formControlName="observaciones"></textarea>
+        <div *ngIf="this.formularioMateria.get('observaciones')?.errors?.['maxlength'] && this.formularioMateria.get('observaciones')?.touched" class="alert alert-danger" role="alert">
+            El texto ingresado no debe tener más de 500 caracteres.
+        </div>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!this.formularioMateria.valid">Agregar</button>
+        <button type="reset" class="btn btn-outline-danger">Borrar</button>
+    </div>
+</form>
